@@ -80,4 +80,161 @@ button:active {
     display: inline-block;
     border: 2px solid #ff6b9d;
     padding: 7px;
-    font-size: 11
+    font-size: 11px;
+    font-weight: bold;
+    transform: rotate(-7deg);
+    margin-top: 10px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    animation: float 3s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- FIRST SCREEN -->
+    <div id="home">
+
+        <div class="emoji">💌</div>
+
+        <h1>Hey Dhyani...</h1>
+
+        <p>
+            You have a little something<br>
+            from the idiot who messed up™ 😭
+        </p>
+
+        <button onclick="openCard()">
+            Open it 🫶
+        </button>
+
+    </div>
+
+
+    <!-- APOLOGY CARD -->
+    <div id="card" class="hidden card">
+
+        <div class="emoji">🥲</div>
+
+        <h1>I'm Sorry 🫶</h1>
+
+        <p>
+            I know my first sorry wasn't enough 😭
+            <br><br>
+            So here's a proper one.
+            I'm genuinely sorry for hurting you.
+            I really didn't want things to become like this between us.
+        </p>
+
+        <button onclick="certificate()">
+            Your certificate 🏆
+        </button>
+
+    </div>
+
+
+    <!-- CERTIFICATE -->
+    <div id="cert" class="hidden card">
+
+        <div class="certificate">
+
+            <div class="emoji">🏆</div>
+
+            <h2>OFFICIAL CERTIFICATE</h2>
+
+            <p>
+                This certificate is proudly presented to
+            </p>
+
+            <h2 style="color:#ff5b91;">
+                DHYANI
+            </h2>
+
+            <p>
+                For having to tolerate<br>
+                <b>MY STUPIDITY™</b> 😭
+            </p>
+
+            <p>
+                Regret: ⭐⭐⭐⭐⭐<br>
+                Excuses: ❌<br>
+                Sorry: <b>100%</b>
+            </p>
+
+            <div class="stamp">
+                OFFICIAL<br>
+                APOLOGY DEPARTMENT
+            </div>
+
+            <p>
+                I really am sorry. 🫶
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openCard() {
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("card").classList.remove("hidden");
+}
+
+function certificate() {
+
+    document.getElementById("card").classList.add("hidden");
+    document.getElementById("cert").classList.remove("hidden");
+
+    // Cute floating hearts
+    for (let i = 0; i < 25; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = ["💗","💖","💕","✨"][Math.floor(Math.random() * 4)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+}
+
+</script>
+
+</body>
+</html>
