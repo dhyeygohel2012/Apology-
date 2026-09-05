@@ -4,111 +4,290 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Dhyani 💌</title>
+<title>Case #001 — Dhyani 💌</title>
 
 <style>
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
     min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, #ffd6e8, transparent 40%),
+        radial-gradient(circle at bottom right, #cfdcff, transparent 40%),
+        #f7f4ff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffd6e7, #dbe7ff);
-    overflow: hidden;
+    padding: 20px;
+    color: #333;
+    overflow-x: hidden;
 }
 
 .container {
-    width: 90%;
-    max-width: 380px;
-    background: white;
-    padding: 28px;
-    border-radius: 25px;
+    width: 100%;
+    max-width: 430px;
     text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,.15);
-    animation: appear .7s ease;
 }
 
-.emoji {
-    font-size: 55px;
+/* ---------- GENERAL ---------- */
+
+.screen {
+    display: none;
+    animation: appear .6s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+.card {
+    background: rgba(255,255,255,.92);
+    border-radius: 28px;
+    padding: 28px 22px;
+    box-shadow: 0 15px 45px rgba(70,50,100,.15);
+    backdrop-filter: blur(10px);
 }
 
 h1 {
-    color: #ff5b91;
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+h2 {
+    margin: 10px 0;
 }
 
 p {
-    color: #555;
+    color: #666;
     line-height: 1.6;
+    margin: 10px 0;
+}
+
+.bigEmoji {
+    font-size: 65px;
 }
 
 button {
     border: none;
-    background: #ff6b9d;
+    background: linear-gradient(135deg,#ff6396,#ff82ad);
     color: white;
     padding: 13px 22px;
-    border-radius: 25px;
+    border-radius: 30px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
+    box-shadow: 0 8px 20px rgba(255,90,140,.25);
+    transition: .2s;
 }
 
 button:active {
-    transform: scale(.95);
+    transform: scale(.94);
+}
+
+.small {
+    font-size: 13px;
+    color: #999;
+}
+
+/* ---------- CASE FILE ---------- */
+
+.case {
+    border: 2px solid #ddd;
+    background: #fffdf8;
+    text-align: left;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 5px 6px 0 #e6e1d8;
+    position: relative;
+}
+
+.caseTop {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.case h1 {
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 27px;
+}
+
+.line {
+    height: 1px;
+    background: #ddd;
+    margin: 18px 0;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    font-size: 14px;
+}
+
+.guilty {
+    color: #e84d76;
+    font-weight: bold;
+}
+
+/* ---------- EVIDENCE ---------- */
+
+.evidence {
+    margin-top: 15px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #faf9ff;
+    border: 1px solid #eee;
+    text-align: left;
+    animation: slideIn .5s ease;
+}
+
+.evidenceNumber {
+    font-size: 12px;
+    color: #ff6396;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.evidence h3 {
+    margin: 7px 0;
 }
 
 .hidden {
     display: none;
 }
 
-.card {
-    animation: appear .5s ease;
+/* ---------- VERDICT ---------- */
+
+.verdict {
+    border: 3px solid #333;
+    padding: 22px;
+    border-radius: 12px;
+    background: #fff;
+    transform: rotate(-1deg);
 }
 
-.certificate {
-    border: 3px dashed #ff6b9d;
-    padding: 18px;
-    border-radius: 18px;
+.verdictTitle {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #777;
+}
+
+.guiltyBig {
+    font-size: 45px;
+    font-weight: 900;
+    margin: 12px 0;
+    color: #e94f78;
+}
+
+/* ---------- APOLOGY ---------- */
+
+.apologyText {
+    background: #fff5f8;
+    padding: 20px;
+    border-radius: 20px;
     margin-top: 15px;
+}
+
+/* ---------- CERTIFICATE ---------- */
+
+.certificate {
+    background: linear-gradient(135deg,#fffdf5,#fff);
+    border: 4px double #e7b95c;
+    padding: 22px 16px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.certificate h1 {
+    color: #b8871d;
+    font-size: 24px;
+}
+
+.certificateName {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff6396;
+    margin: 10px 0;
+}
+
+.stars {
+    margin: 10px 0;
+    font-size: 20px;
 }
 
 .stamp {
     display: inline-block;
-    border: 2px solid #ff6b9d;
-    padding: 7px;
+    margin-top: 15px;
+    padding: 8px 12px;
+    border: 2px solid #e85c82;
+    color: #e85c82;
     font-size: 11px;
     font-weight: bold;
     transform: rotate(-7deg);
-    margin-top: 10px;
+}
+
+/* ---------- CONFETTI ---------- */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    pointer-events: none;
+    animation: fall linear forwards;
+    z-index: 999;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
 }
 
 @keyframes appear {
     from {
         opacity: 0;
-        transform: scale(.85);
+        transform: scale(.85) translateY(15px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) translateY(0);
     }
 }
 
-.heart {
-    position: fixed;
-    bottom: -30px;
-    animation: float 3s linear forwards;
-    pointer-events: none;
-}
-
-@keyframes float {
-    to {
-        transform: translateY(-110vh) rotate(360deg);
+@keyframes slideIn {
+    from {
         opacity: 0;
+        transform: translateX(-25px);
     }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes stamp {
+    from {
+        opacity: 0;
+        transform: scale(2) rotate(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(-7deg);
+    }
+}
+
+.stamp {
+    animation: stamp .5s ease;
 }
 </style>
 </head>
@@ -117,120 +296,403 @@ button:active {
 
 <div class="container">
 
-    <!-- FIRST SCREEN -->
-    <div id="home">
+    <!-- SCREEN 1 -->
+    <section id="screen1" class="screen active">
 
-        <div class="emoji">💌</div>
+        <div class="card">
 
-        <h1>Hey Dhyani...</h1>
+            <div class="bigEmoji">🕵️‍♂️</div>
 
-        <p>
-            You have a little something<br>
-            from the idiot who messed up™ 😭
-        </p>
+            <p class="small">CONFIDENTIAL</p>
 
-        <button onclick="openCard()">
-            Open it 🫶
-        </button>
-
-    </div>
-
-
-    <!-- APOLOGY CARD -->
-    <div id="card" class="hidden card">
-
-        <div class="emoji">🥲</div>
-
-        <h1>I'm Sorry 🫶</h1>
-
-        <p>
-            I know my first sorry wasn't enough 😭
-            <br><br>
-            So here's a proper one.
-            I'm genuinely sorry for hurting you.
-            I really didn't want things to become like this between us.
-        </p>
-
-        <button onclick="certificate()">
-            Your certificate 🏆
-        </button>
-
-    </div>
-
-
-    <!-- CERTIFICATE -->
-    <div id="cert" class="hidden card">
-
-        <div class="certificate">
-
-            <div class="emoji">🏆</div>
-
-            <h2>OFFICIAL CERTIFICATE</h2>
+            <h1>Case #001</h1>
 
             <p>
-                This certificate is proudly presented to
+                A very serious investigation<br>
+                has been opened...
             </p>
 
-            <h2 style="color:#ff5b91;">
-                DHYANI
-            </h2>
+            <button onclick="nextScreen(2)">
+                Investigate 🔍
+            </button>
 
-            <p>
-                For having to tolerate<br>
-                <b>MY STUPIDITY™</b> 😭
-            </p>
+        </div>
 
-            <p>
-                Regret: ⭐⭐⭐⭐⭐<br>
-                Excuses: ❌<br>
-                Sorry: <b>100%</b>
-            </p>
+    </section>
 
-            <div class="stamp">
-                OFFICIAL<br>
-                APOLOGY DEPARTMENT
+
+    <!-- SCREEN 2 -->
+    <section id="screen2" class="screen">
+
+        <div class="case">
+
+            <div class="caseTop">
+                <span>CONFIDENTIAL</span>
+                <span>CASE #001</span>
             </div>
 
-            <p>
-                I really am sorry. 🫶
+            <h1>THE INCIDENT</h1>
+
+            <div class="line"></div>
+
+            <div class="info">
+                <span>Victim</span>
+                <b>Dhyani</b>
+            </div>
+
+            <div class="info">
+                <span>Suspect</span>
+                <b>Me 💀</b>
+            </div>
+
+            <div class="info">
+                <span>Crime</span>
+                <b>Being an idiot</b>
+            </div>
+
+            <div class="info">
+                <span>Evidence</span>
+                <b>Unfortunately, overwhelming 😭</b>
+            </div>
+
+            <div class="info">
+                <span>Status</span>
+                <b class="guilty">GUILTY.</b>
+            </div>
+
+            <button onclick="nextScreen(3)">
+                Examine Evidence 🔍
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCREEN 3 -->
+    <section id="screen3" class="screen">
+
+        <div class="card">
+
+            <h2>🔍 Evidence Board</h2>
+
+            <p class="small">
+                The investigation has uncovered the following...
+            </p>
+
+            <div id="evidence1" class="evidence hidden">
+
+                <div class="evidenceNumber">
+                    EVIDENCE #01
+                </div>
+
+                <h3>The Mistake</h3>
+
+                <p>
+                    Yep... I messed up.
+                    No complicated explanation needed. 😭
+                </p>
+
+            </div>
+
+
+            <div id="evidence2" class="evidence hidden">
+
+                <div class="evidenceNumber">
+                    EVIDENCE #02
+                </div>
+
+                <h3>The Damage</h3>
+
+                <p>
+                    I hurt someone who genuinely matters to me.
+                </p>
+
+            </div>
+
+
+            <div id="evidence3" class="evidence hidden">
+
+                <div class="evidenceNumber">
+                    EVIDENCE #03
+                </div>
+
+                <h3>The Realisation</h3>
+
+                <p>
+                    I should've handled things differently.
+                </p>
+
+            </div>
+
+
+            <button id="evidenceButton" onclick="showEvidence()">
+                Reveal Evidence 1
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCREEN 4 -->
+    <section id="screen4" class="screen">
+
+        <div class="card">
+
+            <div class="verdict">
+
+                <div class="verdictTitle">
+                    FINAL COURT VERDICT
+                </div>
+
+                <div class="guiltyBig">
+                    GUILTY 😭
+                </div>
+
+                <p>
+                    The evidence is undeniable.
+                </p>
+
+                <div class="line"></div>
+
+                <p>
+                    <b>Sentence:</b><br>
+                    One extremely genuine apology 🫶
+                </p>
+
+                <p>
+                    <b>Excuses:</b> 0
+                </p>
+
+            </div>
+
+            <button onclick="nextScreen(5)">
+                Continue 💌
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCREEN 5 -->
+    <section id="screen5" class="screen">
+
+        <div class="card">
+
+            <div class="bigEmoji">🥲</div>
+
+            <h1>Okay, seriously...</h1>
+
+            <div class="apologyText">
+
+                <p>
+                    Dhyani, I know my first sorry wasn't enough.
+                </p>
+
+                <p>
+                    I'm genuinely sorry for hurting you.
+                    I really didn't want things to become like this between us.
+                </p>
+
+                <p>
+                    I can't undo what happened,
+                    but I can learn from it.
+                </p>
+
+                <p>
+                    ❤️
+                </p>
+
+            </div>
+
+            <button onclick="showCertificate()">
+                One last thing... 🏆
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCREEN 6 -->
+    <section id="screen6" class="screen">
+
+        <div class="card">
+
+            <div class="certificate">
+
+                <div style="font-size:50px;">
+                    🏆
+                </div>
+
+                <p class="small">
+                    OFFICIAL DOCUMENT
+                </p>
+
+                <h1>
+                    CERTIFICATE OF APOLOGY
+                </h1>
+
+                <p>
+                    This certificate is proudly presented to
+                </p>
+
+                <div class="certificateName">
+                    DHYANI
+                </div>
+
+                <p>
+                    for having to tolerate
+                </p>
+
+                <h3>
+                    MY STUPIDITY™ 😭
+                </h3>
+
+                <div class="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+                    <b>Regret:</b> 100%<br>
+                    <b>Excuses:</b> 0%<br>
+                    <b>Sorry:</b> ∞
+                </p>
+
+                <div class="stamp">
+                    OFFICIAL<br>
+                    APOLOGY DEPARTMENT
+                </div>
+
+                <p style="margin-top:20px;">
+                    Certified genuinely sorry. 🫶
+                </p>
+
+            </div>
+
+            <p class="small" style="margin-top:15px;">
+                Case #001 — Closed.
             </p>
 
         </div>
 
-    </div>
+    </section>
 
 </div>
 
 
 <script>
 
-function openCard() {
-    document.getElementById("home").classList.add("hidden");
-    document.getElementById("card").classList.remove("hidden");
+/* ---------- SCREEN CHANGER ---------- */
+
+function nextScreen(number) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById("screen" + number)
+        .classList.add("active");
 }
 
-function certificate() {
 
-    document.getElementById("card").classList.add("hidden");
-    document.getElementById("cert").classList.remove("hidden");
+/* ---------- EVIDENCE ---------- */
 
-    // Cute floating hearts
-    for (let i = 0; i < 25; i++) {
+let evidenceStep = 0;
 
-        let heart = document.createElement("div");
+function showEvidence() {
 
-        heart.className = "heart";
-        heart.innerHTML = ["💗","💖","💕","✨"][Math.floor(Math.random() * 4)];
+    evidenceStep++;
 
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (15 + Math.random() * 20) + "px";
-        heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+    if (evidenceStep === 1) {
 
-        document.body.appendChild(heart);
+        document.getElementById("evidence1")
+            .classList.remove("hidden");
+
+        document.getElementById("evidenceButton")
+            .innerText = "Reveal Evidence 2";
+
+    }
+
+    else if (evidenceStep === 2) {
+
+        document.getElementById("evidence2")
+            .classList.remove("hidden");
+
+        document.getElementById("evidenceButton")
+            .innerText = "Reveal Evidence 3";
+
+    }
+
+    else if (evidenceStep === 3) {
+
+        document.getElementById("evidence3")
+            .classList.remove("hidden");
+
+        document.getElementById("evidenceButton")
+            .innerText = "See The Verdict ⚖️";
+
+    }
+
+    else {
+
+        nextScreen(4);
+
+    }
+}
+
+
+/* ---------- CERTIFICATE ---------- */
+
+function showCertificate() {
+
+    nextScreen(6);
+
+    createConfetti();
+}
+
+
+/* ---------- CONFETTI ---------- */
+
+function createConfetti() {
+
+    const symbols = [
+        "💗",
+        "💖",
+        "💕",
+        "✨",
+        "🎉",
+        "⭐"
+    ];
+
+    for (let i = 0; i < 45; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.innerText =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+        piece.style.fontSize =
+            (14 + Math.random() * 18) + "px";
+
+        piece.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * .8 + "s";
+
+        document.body.appendChild(piece);
 
         setTimeout(() => {
-            heart.remove();
-        }, 4000);
+            piece.remove();
+        }, 5000);
     }
 }
 
